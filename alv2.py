@@ -120,7 +120,7 @@ if st.session_state.pagina == 'inicio':
     ¡Mucha suerte!
     """)
     
-    nombre = st.text_input("Por favor, ingresa tu nombre y apellido para personalizar tu experiencia:", key="input_nombre")
+    nombre = st.text_input("Por favor, ingresa tu nombre para personalizar tu experiencia:", key="input_nombre")
     
     if st.button("Generar Quiz", type="primary"):
         if nombre:
