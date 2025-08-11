@@ -220,7 +220,7 @@ elif st.session_state.pagina == 'resultados':
     st.markdown(f"### {nombre} ha finalizado el quiz")
     
     # Calcular calificación en base a 20
-    calificacion = (puntaje_final / 7) * 20
+    calificacion = (puntaje_final / 10) * 20
     
     col1, col2 = st.columns(2)
     
