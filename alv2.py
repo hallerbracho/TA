@@ -225,7 +225,7 @@ elif st.session_state.pagina == 'resultados':
     col1, col2 = st.columns(2)
     
     with col1:
-    	st.metric(label="Respuestas Correctas", value=f"{puntaje_final} de 7", border=True)
+    	st.metric(label="Respuestas Correctas", value=f"{puntaje_final} de 10", border=True)
     	
     with col2:
     	st.metric(label="Calificación (sobre 20)", value=f"{calificacion:.2f}", border=True)
