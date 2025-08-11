@@ -40,16 +40,16 @@ def generar_quiz_con_ia():
     """
     prompt = """
     Actúa como un matemático experto en álgebra lineal y un excelente pedagogo. 
-    Tu tarea es crear un quiz de 7 preguntas de nivel intermedio/avanzado sobre razonamiento lógico en álgebra lineal.
+    Tu tarea es crear un quiz de 10 preguntas de nivel intermedio/avanzado sobre razonamiento lógico en álgebra lineal.
     No te enfoques solo en cálculos mecánicos, sino en la interpretación de conceptos clave.
     Los temas deben incluir: espacios vectoriales, transformaciones lineales, independencia lineal,
-    valores y vectores propios, y el significado geométrico de los determinantes.
+    valores y vectores propios, significado geométrico de los determinantes, formas canónicas elementales y espacios con producto interior. 
 
     Cada pregunta debe tener 4 opciones de respuesta (A, B, C, D).
     Usa código LaTeX para las fórmulas pero asegúrate de colocar el signo dólar ($) antes y despues de la fórmula y que sea 100% compatible con JSON (para evitar errores de escape)
 
     Devuelve el resultado ÚNICAMENTE en formato JSON válido. No incluyas texto, explicaciones o ```json```
-    antes o después del propio objeto JSON. El JSON debe ser una lista de 7 objetos.
+    antes o después del propio objeto JSON. El JSON debe ser una lista de 10 objetos.
 
     Cada objeto en la lista debe tener exactamente las siguientes claves:
     - "pregunta": (string) El texto de la pregunta.
@@ -76,7 +76,7 @@ def generar_quiz_con_ia():
         json_text = response.text.strip().replace("```json", "").replace("```", "").strip()
         quiz_data = json.loads(json_text)
         # Verificación básica del formato
-        if isinstance(quiz_data, list) and len(quiz_data) == 7 and all('pregunta' in q for q in quiz_data):
+        if isinstance(quiz_data, list) and len(quiz_data) == 10 and all('pregunta' in q for q in quiz_data):
             return quiz_data
         else:
             st.error("La IA generó una respuesta con un formato inesperado. Intentando de nuevo...")
@@ -114,7 +114,7 @@ if st.session_state.pagina == 'inicio':
     st.markdown("""
     Este es un quiz interactivo para poner a prueba la comprensión conceptual del álgebra lineal.
     
-    El quiz consta de **7 preguntas** de opción múltiple generadas por una **IA**.
+    El quiz consta de **10 preguntas** de opción múltiple generadas por una **IA**.
     Después de cada respuesta, recibirás una explicación detallada.
     
     ¡Mucha suerte!
@@ -154,13 +154,13 @@ if st.session_state.pagina == 'inicio':
 # PÁGINA DEL QUIZ
 elif st.session_state.pagina == 'quiz':
     st.header(f"Quiz para {st.session_state.nombre_estudiante}")
-    st.progress((st.session_state.pregunta_actual) / 7)
+    st.progress((st.session_state.pregunta_actual) / 10)
     
     # Obtener la pregunta actual
     idx = st.session_state.pregunta_actual
     pregunta_info = st.session_state.quiz_generado[idx]
     
-    st.subheader(f"Pregunta {idx + 1}/7")
+    st.subheader(f"Pregunta {idx + 1}/10")
     st.markdown(f"**{pregunta_info['pregunta']}**")
     
     # Usar un formulario para agrupar las opciones y el botón
