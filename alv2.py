@@ -200,7 +200,7 @@ elif st.session_state.pagina == 'quiz':
         st.info(f"**Explicación:**\n{pregunta_info['explicacion']}")
         
         # Botón para pasar a la siguiente pregunta o ver resultados
-        if st.session_state.pregunta_actual < 6:
+        if st.session_state.pregunta_actual < 9:
             if st.button("Siguiente Pregunta"):
                 st.session_state.pregunta_actual += 1
                 st.session_state.respuesta_enviada = False
